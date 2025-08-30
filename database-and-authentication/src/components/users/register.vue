@@ -1,7 +1,7 @@
 <template>
     <div class="row justify-content-md-center">
         <div class="col col-lg-5">
-            <h1>Register</h1>
+            <h1 v-text="Register ? 'Register' : 'Login'"></h1>
             <hr/>
             <form @submit.prevent="submitForm">
                 <div class="mb-3">
@@ -17,20 +17,77 @@
                     Submit
                 </button>
             </form>
+            <hr/>
+            <button class="btn btn-outline-primary" 
+            v-text="Register ? 'Go to Login' : 'Go to Register'"
+            @click="Register = !Register">
+            </button>
         </div>
     </div>
 </template>
 
 
 <script setup>
-  import { reactive } from 'vue';
+  
+  import { auth } from '../firebase/config';
+ import { 
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword  
+         } from 'firebase/auth';
+  import {ref, reactive} from 'vue';
+  import { useRouter } from 'vue-router';
+
+
+  const router = useRouter();
+  const Register = ref(true);
   const formData = reactive({
     email:'',
     password:''
   });
 
   const submitForm = () => {
-    console.log(formData);
+    if(Register.value){
+       
+    registerUser();
+
+    }else{
+
+       signInUser();
+    }
+    
+  }
+
+  const signInUser = async () => {
+    try{
+        const res = await signInWithEmailAndPassword(
+            auth,
+            formData.email,
+            formData.password
+        )
+        if(!res){
+            throw new Error('Could not complete the login')
+        }
+        router.push('/');
+    }catch(error){
+        console.log(error.message);
+    }
+  }
+
+  const registerUser = async () => {
+    try{
+        const res = await createUserWithEmailAndPassword(
+            auth,
+            formData.email,
+            formData.password
+        )
+        if(!res){
+            throw new Error('Could not complete the register')
+        }
+        router.push('/');
+        
+    }catch(error){
+        console.log(error.message);
+    }
   }
 
 </script>

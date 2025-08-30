@@ -3,8 +3,19 @@ import App from './App.vue'
 import router from './router'
 import Header from './components/header.vue'
 
-const app = createApp(App)
+//firebase
+import { auth } from './components/firebase/config'
+import { onAuthStateChanged } from 'firebase/auth'
 
-app.component('app-header', Header)
-app.use(router)
-app.mount('#app')
+let app;
+onAuthStateChanged(auth, () => {
+    if (!app) {
+        app = createApp(App)
+        app.component('app-header', Header)
+        app.use(router)
+        app.mount('#app')
+    }
+});
+
+
+
