@@ -1,90 +1,51 @@
-# fbase
+# Vue Tutorial Project
 
-This template should help get you started developing with Vue 3 in Vite.
+This repository contains several Vue.js tutorial projects, each demonstrating different features and use-cases of Vue, Vite, and Firebase.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-# Database and Authentication
-
-This project is a Vue.js application demonstrating user authentication and CRUD operations with Firebase.
+## Folders
+- **component-node/**: Basic Vue component structure and node integration.
+- **database-and-authentication/**: User authentication and CRUD operations with Firebase.
+- **REQUEST/**: User management and API requests demo.
+- **Routes/**: Vue Router usage and route management.
 
 ## Features
-- User registration
-- Login/logout
-- Add, update, and delete articles
+- Vue 3 with Composition API
+- Vite for fast development
 - Firebase Firestore integration
+- User registration, login, and authentication
+- CRUD operations for articles and users
 - Responsive UI with Bootstrap
+- Modular component structure
 
-## Project Structure
-```
-database-and-authentication/
-├── index.html
-├── jsconfig.json
-├── package.json
-├── README.md
-├── vite.config.js
-├── public/
-│   └── favicon.ico
-├── src/
-│   ├── App.vue
-│   ├── main.js
-│   ├── assets/
-│   │   ├── base.css
-│   │   ├── logo.svg
-│   │   └── main.css
-│   ├── components/
-│   │   ├── header.vue
-│   │   ├── home.vue
-│   │   ├── admin/
-│   │   │   ├── add_article.vue
-│   │   │   └── update_article.vue
-│   │   ├── firebase/
-│   │   │   └── config.js
-│   │   └── users/
-│   │       └── register.vue
-│   └── router/
-│       └── index.js
-```
-
-## Setup
-1. Install dependencies:
+## Getting Started
+1. Clone the repository:
    ```sh
+   git clone https://github.com/aoropesa-amaoed/vut-tutorial.git
+   cd vue-tutorial
+   ```
+2. Install dependencies for each project folder:
+   ```sh
+   cd <project-folder>
    npm install
    ```
-2. Run the development server:
+3. Run the development server:
    ```sh
    npm run dev
    ```
-3. Configure your Firebase credentials in `src/components/firebase/config.js`.
 
-## Usage
-- Register a new user
-- Login and manage articles
-- Articles are stored in Firebase Firestore
+## Project Structure
+```
+vue-tutorial/
+├── component-node/
+├── database-and-authentication/
+├── REQUEST/
+├── Routes/
+├── README.md
+```
+Each folder contains its own `README.md` with specific instructions.
+
+## Firebase Setup
+For projects using Firebase, configure your credentials in the respective `src/components/firebase/config.js` file.
 
 ## License
 MIT
